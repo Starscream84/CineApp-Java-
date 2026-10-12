@@ -1,9 +1,10 @@
 dao/DAO.class
+dao/MovieDAO.class
 view/FrmFunciones.class
 view/FrmPeliculas.class
+dao/DAOException.class
 model/Movie.class
-dao/DaoException.class
 view/FrmFunciones$1.class
-dao/MovieDao.class
 model/Function.class
 com/mycompany/cineapp/CineApp.class
+dao/MovieDAOJPA.class

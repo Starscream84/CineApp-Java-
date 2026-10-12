@@ -24,7 +24,10 @@ public class MovieDAOJPA implements MovieDAO {
     @Override
     public List<Movie> findByTitle(String title) throws DAOException {
         try {
-            return em.find(Movie.class, title);
+            TypedQuery<Movie> query = em.createQuery(
+                    "SELECT m FROM Movie m WHERE m.title LIKE :title", Movie.class);
+            query.setParameter("title", "%" + title + "%");
+            return query.getResultList();
         } catch (PersistenceException e) {
             throw new DAOException("No se encontro la pelicula", e);
         }
