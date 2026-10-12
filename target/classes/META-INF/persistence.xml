@@ -1,0 +1,15 @@
+<persistence>
+    <persistence-unit name="cinema">
+        <properties>
+            <property name="jakarta.persistence.jdbc.url"
+            value="jdbc:mysql://localhost:3306/cinema"/>
+            <property name="jakarta.persistence.jdbc.user" value="root" />
+            <property name="jakarta.persistence.jdbc.password" value="password" />
+            <property name="hibernate.hbm2ddl.auto" value="update" />
+        </properties>
+    </persistence-unit>
+</persistence> 
+
+
+
+
