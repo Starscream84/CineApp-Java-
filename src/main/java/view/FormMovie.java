@@ -11,6 +11,7 @@ public class FormMovie extends javax.swing.JFrame {
 
     public FormMovie() {
         initComponents();
+        clearForm();
     }
 
     public JButton getBtnSave() {
@@ -38,7 +39,8 @@ public class FormMovie extends javax.swing.JFrame {
     }
 
     public String getGenreText() {
-        return txtGenre.getText();
+        Object item = cmbGenre.getSelectedItem();
+        return item == null ? "" : item.toString();
     }
 
     public String getDurationText() {
@@ -46,7 +48,8 @@ public class FormMovie extends javax.swing.JFrame {
     }
 
     public String getRatingText() {
-        return txtRating.getText();
+        Object item = cmbRating.getSelectedItem();
+        return item == null ? "" : item.toString();
     }
 
     public String getYearText() {
@@ -79,17 +82,17 @@ public class FormMovie extends javax.swing.JFrame {
 
     public void fillForm(Movie m) {
         txtTitle.setText(m.getTitle());
-        txtGenre.setText(m.getGenre());
+        cmbGenre.setSelectedItem(m.getGenre());
         txtDuration.setText(String.valueOf(m.getDuration()));
-        txtRating.setText(m.getFilmRating());
+        cmbRating.setSelectedItem(m.getFilmRating());
         txtYear.setText(String.valueOf(m.getYear()));
     }
 
     public void clearForm() {
         txtTitle.setText("");
-        txtGenre.setText("");
+        cmbGenre.setSelectedIndex(-1);
         txtDuration.setText("");
-        txtRating.setText("");
+        cmbRating.setSelectedIndex(-1);
         txtYear.setText("");
         tblMovies.clearSelection();
     }
@@ -122,12 +125,12 @@ public class FormMovie extends javax.swing.JFrame {
         btnDelete = new javax.swing.JButton();
         btnClear = new javax.swing.JButton();
         txtTitle = new javax.swing.JTextField();
-        txtGenre = new javax.swing.JTextField();
         txtDuration = new javax.swing.JTextField();
         txtYear = new javax.swing.JTextField();
-        txtRating = new javax.swing.JTextField();
         jScrollPane = new javax.swing.JScrollPane();
         tblMovies = new javax.swing.JTable();
+        cmbGenre = new javax.swing.JComboBox<>();
+        cmbRating = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -154,13 +157,9 @@ public class FormMovie extends javax.swing.JFrame {
         txtTitle.setBackground(new java.awt.Color(255, 255, 255));
         txtTitle.setToolTipText("");
 
-        txtGenre.setBackground(new java.awt.Color(255, 255, 255));
-
         txtDuration.setBackground(new java.awt.Color(255, 255, 255));
 
         txtYear.setBackground(new java.awt.Color(255, 255, 255));
-
-        txtRating.setBackground(new java.awt.Color(255, 255, 255));
 
         tblMovies.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -179,6 +178,12 @@ public class FormMovie extends javax.swing.JFrame {
             }
         });
         jScrollPane.setViewportView(tblMovies);
+
+        cmbGenre.setBackground(new java.awt.Color(255, 255, 255));
+        cmbGenre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Acción", "Animación", "Aventura", "Comedia", "Drama", "Terror", "Ciencia Ficción", "Fantasia", "Romance", "Musical", "Documental", " " }));
+
+        cmbRating.setBackground(new java.awt.Color(255, 255, 255));
+        cmbRating.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ATP", "+13", "+16", "+18" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -208,11 +213,11 @@ public class FormMovie extends javax.swing.JFrame {
                                         .addComponent(lblRating))
                                     .addGap(18, 18, 18)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtRating, javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(txtTitle, javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(txtDuration)
-                                        .addComponent(txtGenre)
-                                        .addComponent(txtYear))))
+                                        .addComponent(txtYear)
+                                        .addComponent(cmbGenre, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(cmbRating, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(124, 124, 124)
                                 .addComponent(jLabel1)))
@@ -235,7 +240,7 @@ public class FormMovie extends javax.swing.JFrame {
                 .addGap(7, 7, 7)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblGenre)
-                    .addComponent(txtGenre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbGenre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDuration)
@@ -243,7 +248,7 @@ public class FormMovie extends javax.swing.JFrame {
                 .addGap(7, 7, 7)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblRating)
-                    .addComponent(txtRating, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbRating, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(7, 7, 7)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblYear)
@@ -271,6 +276,8 @@ public class FormMovie extends javax.swing.JFrame {
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnSave;
+    private javax.swing.JComboBox<String> cmbGenre;
+    private javax.swing.JComboBox<String> cmbRating;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane;
     private javax.swing.JLabel lblDuration;
@@ -280,8 +287,6 @@ public class FormMovie extends javax.swing.JFrame {
     private javax.swing.JLabel lblYear;
     private javax.swing.JTable tblMovies;
     private javax.swing.JTextField txtDuration;
-    private javax.swing.JTextField txtGenre;
-    private javax.swing.JTextField txtRating;
     private javax.swing.JTextField txtTitle;
     private javax.swing.JTextField txtYear;
     // End of variables declaration//GEN-END:variables
