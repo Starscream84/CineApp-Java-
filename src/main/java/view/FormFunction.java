@@ -8,14 +8,14 @@ package view;
  *
  * @author User
  */
-public class FrmFunciones extends javax.swing.JFrame {
+public class FormFunction extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrmFunciones.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FormFunction.class.getName());
 
     /**
      * Creates new form FrmFunciones
      */
-    public FrmFunciones() {
+    public FormFunction() {
         initComponents();
     }
 
@@ -239,7 +239,7 @@ public class FrmFunciones extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new FrmFunciones().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new FormFunction().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
