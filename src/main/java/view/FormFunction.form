@@ -88,17 +88,17 @@
                   <EmptySpace min="-2" pref="111" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="lblPelicula" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblMovie" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="cmbMovie" min="-2" pref="258" max="-2" attributes="0"/>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblFecha" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblHora" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblPrecio" min="-2" max="-2" attributes="0"/>
-                              <Component id="lblSala" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblDate" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblHour" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblPrice" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblHall" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -145,27 +145,27 @@
                   <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="cmbMovie" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblPelicula" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblMovie" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="txtDate" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblFecha" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblDate" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="txtHour" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblHora" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblHour" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblPrecio" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
+                      <Component id="lblPrice" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
                       <Component id="cmbHall" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="txtPrice" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblSala" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblHall" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                   <Component id="btnSave" min="-2" max="-2" attributes="0"/>
@@ -183,7 +183,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="lblPrecio">
+        <Component class="javax.swing.JLabel" name="lblPrice">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -224,7 +224,7 @@
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblPelicula">
+        <Component class="javax.swing.JLabel" name="lblMovie">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -232,7 +232,7 @@
             <Property name="text" type="java.lang.String" value="Pelicula:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblFecha">
+        <Component class="javax.swing.JLabel" name="lblDate">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -240,7 +240,7 @@
             <Property name="text" type="java.lang.String" value="Fecha:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblHora">
+        <Component class="javax.swing.JLabel" name="lblHour">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -248,7 +248,7 @@
             <Property name="text" type="java.lang.String" value="Hora:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblSala">
+        <Component class="javax.swing.JLabel" name="lblHall">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>

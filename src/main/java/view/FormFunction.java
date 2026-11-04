@@ -32,13 +32,13 @@ public class FormFunction extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jSeparator1 = new javax.swing.JSeparator();
         jPanel1 = new javax.swing.JPanel();
-        lblPrecio = new javax.swing.JLabel();
+        lblPrice = new javax.swing.JLabel();
         cmbHall = new javax.swing.JComboBox<>();
         cmbMovie = new javax.swing.JComboBox<>();
-        lblPelicula = new javax.swing.JLabel();
-        lblFecha = new javax.swing.JLabel();
-        lblHora = new javax.swing.JLabel();
-        lblSala = new javax.swing.JLabel();
+        lblMovie = new javax.swing.JLabel();
+        lblDate = new javax.swing.JLabel();
+        lblHour = new javax.swing.JLabel();
+        lblHall = new javax.swing.JLabel();
         lblTitle2 = new javax.swing.JLabel();
         lblTitle1 = new java.awt.Label();
         txtDate = new javax.swing.JTextField();
@@ -68,25 +68,25 @@ public class FormFunction extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(30, 41, 59));
 
-        lblPrecio.setForeground(new java.awt.Color(255, 255, 255));
-        lblPrecio.setText("Sala:");
+        lblPrice.setForeground(new java.awt.Color(255, 255, 255));
+        lblPrice.setText("Sala:");
 
         cmbHall.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         cmbMovie.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbMovie.addActionListener(this::cmbMovieActionPerformed);
 
-        lblPelicula.setForeground(new java.awt.Color(255, 255, 255));
-        lblPelicula.setText("Pelicula:");
+        lblMovie.setForeground(new java.awt.Color(255, 255, 255));
+        lblMovie.setText("Pelicula:");
 
-        lblFecha.setForeground(new java.awt.Color(255, 255, 255));
-        lblFecha.setText("Fecha:");
+        lblDate.setForeground(new java.awt.Color(255, 255, 255));
+        lblDate.setText("Fecha:");
 
-        lblHora.setForeground(new java.awt.Color(255, 255, 255));
-        lblHora.setText("Hora:");
+        lblHour.setForeground(new java.awt.Color(255, 255, 255));
+        lblHour.setText("Hora:");
 
-        lblSala.setForeground(new java.awt.Color(255, 255, 255));
-        lblSala.setText("Precio:");
+        lblHall.setForeground(new java.awt.Color(255, 255, 255));
+        lblHall.setText("Precio:");
 
         lblTitle2.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         lblTitle2.setForeground(new java.awt.Color(255, 255, 255));
@@ -155,16 +155,16 @@ public class FormFunction extends javax.swing.JFrame {
                 .addGap(111, 111, 111)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblPelicula)
+                        .addComponent(lblMovie)
                         .addGap(18, 18, 18)
                         .addComponent(cmbMovie, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblFecha)
-                            .addComponent(lblHora)
-                            .addComponent(lblPrecio)
-                            .addComponent(lblSala))
+                            .addComponent(lblDate)
+                            .addComponent(lblHour)
+                            .addComponent(lblPrice)
+                            .addComponent(lblHall))
                         .addGap(24, 24, 24)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtHour, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -200,23 +200,23 @@ public class FormFunction extends javax.swing.JFrame {
                 .addGap(41, 41, 41)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbMovie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPelicula))
+                    .addComponent(lblMovie))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblFecha))
+                    .addComponent(lblDate))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtHour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblHora))
+                    .addComponent(lblHour))
                 .addGap(20, 20, 20)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbHall, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblSala))
+                    .addComponent(lblHall))
                 .addGap(29, 29, 29)
                 .addComponent(btnSave)
                 .addGap(33, 33, 33)
@@ -294,11 +294,11 @@ public class FormFunction extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JLabel lblFecha;
-    private javax.swing.JLabel lblHora;
-    private javax.swing.JLabel lblPelicula;
-    private javax.swing.JLabel lblPrecio;
-    private javax.swing.JLabel lblSala;
+    private javax.swing.JLabel lblDate;
+    private javax.swing.JLabel lblHall;
+    private javax.swing.JLabel lblHour;
+    private javax.swing.JLabel lblMovie;
+    private javax.swing.JLabel lblPrice;
     private java.awt.Label lblTitle1;
     private javax.swing.JLabel lblTitle2;
     private javax.swing.JTextField txtDate;

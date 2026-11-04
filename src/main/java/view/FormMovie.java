@@ -57,6 +57,7 @@ public class FormMovie extends javax.swing.JFrame {
         btnAdd = new javax.swing.JButton();
         btnView = new javax.swing.JButton();
         lblTitle1 = new java.awt.Label();
+        btnExit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -81,6 +82,12 @@ public class FormMovie extends javax.swing.JFrame {
         lblTitle1.setForeground(new java.awt.Color(255, 255, 255));
         lblTitle1.setText("Cine APP");
 
+        btnExit.setBackground(new java.awt.Color(204, 204, 204));
+        btnExit.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnExit.setForeground(new java.awt.Color(0, 0, 51));
+        btnExit.setText("Salir");
+        btnExit.addActionListener(this::btnExitActionPerformed);
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -97,6 +104,10 @@ public class FormMovie extends javax.swing.JFrame {
                             .addComponent(lblTitle2)
                             .addComponent(btnView))))
                 .addContainerGap(148, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnExit)
+                .addGap(197, 197, 197))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -109,7 +120,9 @@ public class FormMovie extends javax.swing.JFrame {
                 .addComponent(btnAdd)
                 .addGap(18, 18, 18)
                 .addComponent(btnView)
-                .addContainerGap(115, Short.MAX_VALUE))
+                .addGap(35, 35, 35)
+                .addComponent(btnExit)
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -126,9 +139,14 @@ public class FormMovie extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnExitActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnExit;
     private javax.swing.JButton btnView;
     private javax.swing.JPanel jPanel2;
     private java.awt.Label lblTitle1;
