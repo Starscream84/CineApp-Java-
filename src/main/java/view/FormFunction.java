@@ -32,24 +32,16 @@ public class FormFunction extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jSeparator1 = new javax.swing.JSeparator();
         jPanel1 = new javax.swing.JPanel();
-        lblPrice = new javax.swing.JLabel();
-        cmbHall = new javax.swing.JComboBox<>();
-        cmbMovie = new javax.swing.JComboBox<>();
-        lblMovie = new javax.swing.JLabel();
-        lblDate = new javax.swing.JLabel();
-        lblHour = new javax.swing.JLabel();
-        lblHall = new javax.swing.JLabel();
         lblTitle2 = new javax.swing.JLabel();
         lblTitle1 = new java.awt.Label();
-        txtDate = new javax.swing.JTextField();
-        txtPrice = new javax.swing.JTextField();
-        txtHour = new javax.swing.JTextField();
         btnEdit = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
-        btnSave = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
+        btnAdd = new javax.swing.JButton();
+        btnView = new javax.swing.JButton();
+        btnExit1 = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -67,26 +59,6 @@ public class FormFunction extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(30, 41, 59));
-
-        lblPrice.setForeground(new java.awt.Color(255, 255, 255));
-        lblPrice.setText("Sala:");
-
-        cmbHall.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        cmbMovie.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cmbMovie.addActionListener(this::cmbMovieActionPerformed);
-
-        lblMovie.setForeground(new java.awt.Color(255, 255, 255));
-        lblMovie.setText("Pelicula:");
-
-        lblDate.setForeground(new java.awt.Color(255, 255, 255));
-        lblDate.setText("Fecha:");
-
-        lblHour.setForeground(new java.awt.Color(255, 255, 255));
-        lblHour.setText("Hora:");
-
-        lblHall.setForeground(new java.awt.Color(255, 255, 255));
-        lblHall.setText("Precio:");
 
         lblTitle2.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         lblTitle2.setForeground(new java.awt.Color(255, 255, 255));
@@ -108,11 +80,6 @@ public class FormFunction extends javax.swing.JFrame {
         btnExit.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnExit.setText("SALIR");
         btnExit.addActionListener(this::btnExitActionPerformed);
-
-        btnSave.setBackground(new java.awt.Color(153, 255, 153));
-        btnSave.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnSave.setForeground(new java.awt.Color(0, 0, 51));
-        btnSave.setText("GUARDAR");
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -138,40 +105,27 @@ public class FormFunction extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jTable2);
 
+        btnAdd.setBackground(new java.awt.Color(185, 216, 255));
+        btnAdd.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnAdd.setForeground(new java.awt.Color(0, 0, 51));
+        btnAdd.setText("+AGREGAR FUNCIONES");
+        btnAdd.setActionCommand("");
+
+        btnView.setBackground(new java.awt.Color(185, 216, 255));
+        btnView.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnView.setForeground(new java.awt.Color(0, 0, 51));
+        btnView.setText("VER LISTA DE FUNCIONES");
+
+        btnExit1.setBackground(new java.awt.Color(204, 204, 204));
+        btnExit1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnExit1.setForeground(new java.awt.Color(0, 0, 51));
+        btnExit1.setText("Salir");
+        btnExit1.addActionListener(this::btnExit1ActionPerformed);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(212, 212, 212)
-                        .addComponent(lblTitle1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(195, 195, 195)
-                        .addComponent(lblTitle2)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(111, 111, 111)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblMovie)
-                        .addGap(18, 18, 18)
-                        .addComponent(cmbMovie, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblDate)
-                            .addComponent(lblHour)
-                            .addComponent(lblPrice)
-                            .addComponent(lblHall))
-                        .addGap(24, 24, 24)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtHour, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cmbHall, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -185,10 +139,21 @@ public class FormFunction extends javax.swing.JFrame {
                         .addGap(67, 67, 67)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 60, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnSave)
-                .addGap(229, 229, 229))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(212, 212, 212)
+                        .addComponent(lblTitle1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(195, 195, 195)
+                        .addComponent(lblTitle2))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(183, 183, 183)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                            .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnView)
+                            .addComponent(btnExit1))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -197,29 +162,13 @@ public class FormFunction extends javax.swing.JFrame {
                 .addComponent(lblTitle1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblTitle2)
-                .addGap(41, 41, 41)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmbMovie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblMovie))
+                .addGap(35, 35, 35)
+                .addComponent(btnAdd)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblDate))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtHour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblHour))
-                .addGap(20, 20, 20)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbHall, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblHall))
-                .addGap(29, 29, 29)
-                .addComponent(btnSave)
-                .addGap(33, 33, 33)
+                .addComponent(btnView)
+                .addGap(35, 35, 35)
+                .addComponent(btnExit1)
+                .addGap(153, 153, 153)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -249,9 +198,9 @@ public class FormFunction extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnExitActionPerformed
 
-    private void cmbMovieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbMovieActionPerformed
+    private void btnExit1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExit1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cmbMovieActionPerformed
+    }//GEN-LAST:event_btnExit1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -279,12 +228,12 @@ public class FormFunction extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnEdit;
     private javax.swing.JButton btnExit;
-    private javax.swing.JButton btnSave;
-    private javax.swing.JComboBox<String> cmbHall;
-    private javax.swing.JComboBox<String> cmbMovie;
+    private javax.swing.JButton btnExit1;
+    private javax.swing.JButton btnView;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -294,15 +243,7 @@ public class FormFunction extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
-    private javax.swing.JLabel lblDate;
-    private javax.swing.JLabel lblHall;
-    private javax.swing.JLabel lblHour;
-    private javax.swing.JLabel lblMovie;
-    private javax.swing.JLabel lblPrice;
     private java.awt.Label lblTitle1;
     private javax.swing.JLabel lblTitle2;
-    private javax.swing.JTextField txtDate;
-    private javax.swing.JTextField txtHour;
-    private javax.swing.JTextField txtPrice;
     // End of variables declaration//GEN-END:variables
 }
