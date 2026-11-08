@@ -1,101 +1,39 @@
 package view;
-
 import javax.swing.JButton;
-import javax.swing.JTable;
-import java.util.List;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
-import model.Movie;
+//import model.Movie;
 
 public class FormMovie extends javax.swing.JFrame {
 
     public FormMovie() {
         initComponents();
-        clearForm();
     }
 
-    public JButton getBtnSave() {
-        return btnSave;
+    public JButton getBtnAdd() {
+        return btnAdd;
     }
 
-    public JButton getBtnEdit() {
-        return btnEdit;
+    public JButton getBtnView() {
+        return btnView;
     }
 
-    public JButton getBtnDelete() {
-        return btnDelete;
-    }
-
-    public JButton getBtnClear() {
-        return btnClear;
-    }
-
-    public JTable getTable() {
-        return tblMovies;
-    }
-
-    public String getTitleText() {
-        return txtTitle.getText();
-    }
-
-    public String getGenreText() {
-        Object item = cmbGenre.getSelectedItem();
-        return item == null ? "" : item.toString();
-    }
-
-    public String getDurationText() {
-        return txtDuration.getText();
-    }
-
-    public String getRatingText() {
-        Object item = cmbRating.getSelectedItem();
-        return item == null ? "" : item.toString();
-    }
-
-    public String getYearText() {
-        return txtYear.getText();
-    }
-
-    public void showMovies(List<Movie> movies) {
-        DefaultTableModel model = (DefaultTableModel) tblMovies.getModel();
-        model.setRowCount(0);
-        for (Movie m : movies) {
-            model.addRow(new Object[]{
-                m.getId(), m.getTitle(), m.getGenre(), m.getDuration(),
-                m.getFilmRating(), m.getYear()
-            });
-        }
-    }
-
-    public boolean confirm(String message) {
-        int option = JOptionPane.showConfirmDialog(this, message, "Confirmar", JOptionPane.YES_NO_OPTION);
-        return option == JOptionPane.YES_OPTION;
-    }
-
-    public Long getSelectedId() {
-        int row = tblMovies.getSelectedRow();
-        if (row == -1) {
-            return null;
-        }
-        return (Long) tblMovies.getValueAt(row, 0);
-    }
-
-    public void fillForm(Movie m) {
+    /*public void fillForm(Movie m) {
         txtTitle.setText(m.getTitle());
-        cmbGenre.setSelectedItem(m.getGenre());
+        txtGenre.setText(m.getGenre());
         txtDuration.setText(String.valueOf(m.getDuration()));
-        cmbRating.setSelectedItem(m.getFilmRating());
+        txtRating.setText(m.getFilmRating());
         txtYear.setText(String.valueOf(m.getYear()));
     }
 
     public void clearForm() {
         txtTitle.setText("");
-        cmbGenre.setSelectedIndex(-1);
+        txtGenre.setText("");
         txtDuration.setText("");
-        cmbRating.setSelectedIndex(-1);
+        txtRating.setText("");
         txtYear.setText("");
         tblMovies.clearSelection();
     }
+    */
 
     public void showMessage(String message) {
         JOptionPane.showMessageDialog(this, message);
@@ -114,180 +52,97 @@ public class FormMovie extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        lblTitle = new javax.swing.JLabel();
-        lblGenre = new javax.swing.JLabel();
-        lblRating = new javax.swing.JLabel();
-        lblDuration = new javax.swing.JLabel();
-        lblYear = new javax.swing.JLabel();
-        btnSave = new javax.swing.JButton();
-        btnEdit = new javax.swing.JButton();
-        btnDelete = new javax.swing.JButton();
-        btnClear = new javax.swing.JButton();
-        txtTitle = new javax.swing.JTextField();
-        txtDuration = new javax.swing.JTextField();
-        txtYear = new javax.swing.JTextField();
-        jScrollPane = new javax.swing.JScrollPane();
-        tblMovies = new javax.swing.JTable();
-        cmbGenre = new javax.swing.JComboBox<>();
-        cmbRating = new javax.swing.JComboBox<>();
+        jPanel2 = new javax.swing.JPanel();
+        lblTitle2 = new javax.swing.JLabel();
+        btnAdd = new javax.swing.JButton();
+        btnView = new javax.swing.JButton();
+        lblTitle1 = new java.awt.Label();
+        btnExit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("GESTIÓN DE PELICULAS");
+        jPanel2.setBackground(new java.awt.Color(30, 41, 59));
 
-        lblTitle.setText("Título:");
+        lblTitle2.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        lblTitle2.setForeground(new java.awt.Color(255, 255, 255));
+        lblTitle2.setText("Gestión de peliculas");
 
-        lblGenre.setText("Género: ");
+        btnAdd.setBackground(new java.awt.Color(185, 216, 255));
+        btnAdd.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnAdd.setForeground(new java.awt.Color(0, 0, 51));
+        btnAdd.setText("+AGREGAR PELICULA");
+        btnAdd.setActionCommand("");
 
-        lblRating.setText("Clasificación:");
+        btnView.setBackground(new java.awt.Color(185, 216, 255));
+        btnView.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnView.setForeground(new java.awt.Color(0, 0, 51));
+        btnView.setText("VER LISTA DE PELICULAS");
 
-        lblDuration.setText("Duración:");
+        lblTitle1.setFont(new java.awt.Font("Dialog", 1, 22)); // NOI18N
+        lblTitle1.setForeground(new java.awt.Color(255, 255, 255));
+        lblTitle1.setText("Cine APP");
 
-        lblYear.setText("Año:");
+        btnExit.setBackground(new java.awt.Color(204, 204, 204));
+        btnExit.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnExit.setForeground(new java.awt.Color(0, 0, 51));
+        btnExit.setText("Salir");
+        btnExit.addActionListener(this::btnExitActionPerformed);
 
-        btnSave.setText("GUARDAR");
-
-        btnEdit.setText("EDITAR");
-
-        btnDelete.setText("ELIMINAR");
-
-        btnClear.setText("LIMPIAR");
-
-        txtTitle.setBackground(new java.awt.Color(255, 255, 255));
-        txtTitle.setToolTipText("");
-
-        txtDuration.setBackground(new java.awt.Color(255, 255, 255));
-
-        txtYear.setBackground(new java.awt.Color(255, 255, 255));
-
-        tblMovies.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "ID", "Titulo", "Genero", "Duracion", "Clasificacion", "Año"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane.setViewportView(tblMovies);
-
-        cmbGenre.setBackground(new java.awt.Color(255, 255, 255));
-        cmbGenre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Acción", "Animación", "Aventura", "Comedia", "Drama", "Terror", "Ciencia Ficción", "Fantasia", "Romance", "Musical", "Documental", " " }));
-
-        cmbRating.setBackground(new java.awt.Color(255, 255, 255));
-        cmbRating.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ATP", "+13", "+16", "+18" }));
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(148, 148, 148)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(lblTitle2)
+                    .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnView)
+                    .addComponent(lblTitle1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnExit))
+                .addContainerGap(148, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblTitle1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(2, 2, 2)
+                .addComponent(lblTitle2)
+                .addGap(43, 43, 43)
+                .addComponent(btnAdd)
+                .addGap(18, 18, 18)
+                .addComponent(btnView)
+                .addGap(35, 35, 35)
+                .addComponent(btnExit)
+                .addContainerGap(57, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(79, 79, 79)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(btnSave)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnEdit)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnDelete)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnClear))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblYear)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lblTitle)
-                                        .addComponent(lblGenre)
-                                        .addComponent(lblDuration)
-                                        .addComponent(lblRating))
-                                    .addGap(18, 18, 18)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtTitle, javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(txtDuration)
-                                        .addComponent(txtYear)
-                                        .addComponent(cmbGenre, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(cmbRating, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(124, 124, 124)
-                                .addComponent(jLabel1)))
-                        .addGap(19, 19, 19)))
-                .addGap(94, 94, 94))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(jLabel1)
-                .addGap(17, 17, 17)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTitle)
-                    .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(7, 7, 7)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblGenre)
-                    .addComponent(cmbGenre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblDuration)
-                    .addComponent(txtDuration, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(7, 7, 7)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblRating)
-                    .addComponent(cmbRating, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(7, 7, 7)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblYear)
-                    .addComponent(txtYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(btnDelete)
-                    .addComponent(btnClear)
-                    .addComponent(btnSave)
-                    .addComponent(btnEdit))
-                .addGap(27, 27, 27)
-                .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 403, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(40, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-
-        lblTitle.getAccessibleContext().setAccessibleDescription("lblTitulo");
-        lblDuration.getAccessibleContext().setAccessibleDescription("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnExitActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnClear;
-    private javax.swing.JButton btnDelete;
-    private javax.swing.JButton btnEdit;
-    private javax.swing.JButton btnSave;
-    private javax.swing.JComboBox<String> cmbGenre;
-    private javax.swing.JComboBox<String> cmbRating;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane;
-    private javax.swing.JLabel lblDuration;
-    private javax.swing.JLabel lblGenre;
-    private javax.swing.JLabel lblRating;
-    private javax.swing.JLabel lblTitle;
-    private javax.swing.JLabel lblYear;
-    private javax.swing.JTable tblMovies;
-    private javax.swing.JTextField txtDuration;
-    private javax.swing.JTextField txtTitle;
-    private javax.swing.JTextField txtYear;
+    private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnExit;
+    private javax.swing.JButton btnView;
+    private javax.swing.JPanel jPanel2;
+    private java.awt.Label lblTitle1;
+    private javax.swing.JLabel lblTitle2;
     // End of variables declaration//GEN-END:variables
 }
