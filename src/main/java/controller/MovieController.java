@@ -5,6 +5,8 @@ import dao.MovieDAO;
 import model.Movie;
 import model.usecase.CreateMovie;
 import view.FormMovie;
+import view.FrmAddMovie;
+import view.FrmViewMovie;
 import java.util.List;
 import model.usecase.ListMovies;
 import model.usecase.FindMovie;
@@ -19,12 +21,39 @@ public class MovieController {
     public MovieController(FormMovie view, MovieDAO dao) {
         this.view = view;
         this.dao = dao;
-
+        
+        //abre la ventana para agregar una pelicula
+        view.getBtnAdd().addActionListener(e -> openAddMovie());
+        
+         // Abre la ventana con el listado de peliculas
+        view.getBtnView().addActionListener(e -> openViewMovies());
+    }
+        
+        private void openAddMovie()
+        {
+            FrmAddMovie ventana = new FrmAddMovie();
+            ventana.setLocationRelativeTo(view);
+            ventana.setVisible(true);
+        
+        }
+        
+        private void openViewMovies()
+        {
+            FrmViewMovie ventana = new FrmViewMovie();
+            ventana.setLocationRelativeTo(view);
+            ventana.setVisible(true);
+        
+        
+        
+        }
+        /*
+        //constructor 
         view.getBtnSave().addActionListener(e -> save());
         view.getBtnEdit().addActionListener(e -> update());
         view.getBtnDelete().addActionListener(e -> delete());
         view.getBtnClear().addActionListener(e -> view.clearForm());
-
+        
+        //registra tabla
         view.getTable().getSelectionModel().addListSelectionListener(e -> {
             if (!e.getValueIsAdjusting()) {
                 selectMovie();
@@ -135,4 +164,6 @@ public class MovieController {
             throw new IllegalArgumentException(fieldName + " tiene que ser un numero.");
         }
     }
+        */
+    
 }
