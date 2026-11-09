@@ -14,11 +14,21 @@ import jakarta.persistence.PersistenceException;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import view.FrmMenu;
 
 public class CineApp {
 
     public static void main(String[] args) {
+        // Java's standard look (Metal), so the button colors are shown on every
+        // operating system: the native macOS look ignores button backgrounds
+        try {
+            UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+        } catch (ReflectiveOperationException | UnsupportedLookAndFeelException e) {
+            // If it cannot be applied, the default look is used
+        }
+
         EntityManagerFactory emf;
         try {
             emf = Persistence.createEntityManagerFactory("cinema", databaseOverrides());
