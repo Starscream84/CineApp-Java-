@@ -1,6 +1,9 @@
 package view;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -12,7 +15,6 @@ import model.Showtime;
 
 public class FrmAddFunction extends javax.swing.JFrame {
 
-    private static final DateTimeFormatter DATE = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     private static final DateTimeFormatter HOUR = DateTimeFormatter.ofPattern("HH:mm");
 
     public FrmAddFunction() {
@@ -44,8 +46,13 @@ public class FrmAddFunction extends javax.swing.JFrame {
         return (Room) cmbHall.getSelectedItem();
     }
 
-    public String getDateText() {
-        return txtDate.getText();
+    // Returns the date chosen in the calendar, or null if none was chosen
+    public LocalDate getSelectedDate() {
+        Date date = dateChooser.getDate();
+        if (date == null) {
+            return null;
+        }
+        return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
     }
 
     public String getHourText() {
@@ -58,7 +65,7 @@ public class FrmAddFunction extends javax.swing.JFrame {
 
     public void fillForm(Showtime s) {
         selectMovie(s.getMovie());
-        txtDate.setText(s.getDate().format(DATE));
+        dateChooser.setDate(Date.from(s.getDate().atStartOfDay(ZoneId.systemDefault()).toInstant()));
         txtHour.setText(s.getStartTime().format(HOUR));
         selectRoom(s.getRoom());
         txtPrice.setText(s.getPrice().toPlainString());
@@ -86,7 +93,7 @@ public class FrmAddFunction extends javax.swing.JFrame {
 
     public void clearForm() {
         cmbMovie.setSelectedIndex(-1);
-        txtDate.setText("");
+        dateChooser.setDate(null);
         txtHour.setText("");
         cmbHall.setSelectedIndex(-1);
         txtPrice.setText("");
@@ -125,7 +132,7 @@ public class FrmAddFunction extends javax.swing.JFrame {
         lblPrice = new javax.swing.JLabel();
         lblTitle2 = new javax.swing.JLabel();
         lblTitle1 = new java.awt.Label();
-        txtDate = new javax.swing.JTextField();
+        dateChooser = new com.toedter.calendar.JDateChooser();
         txtPrice = new javax.swing.JTextField();
         txtHour = new javax.swing.JTextField();
         btnSave = new javax.swing.JButton();
@@ -142,7 +149,9 @@ public class FrmAddFunction extends javax.swing.JFrame {
         lblMovie.setText("Pelicula:");
 
         lblDate.setForeground(new java.awt.Color(255, 255, 255));
-        lblDate.setText("Fecha (dd/mm/aaaa)");
+        lblDate.setText("Fecha:");
+
+        dateChooser.setDateFormatString("dd/MM/yyyy");
 
         lblHour.setForeground(new java.awt.Color(255, 255, 255));
         lblHour.setText("Hora (hh:mm)");
@@ -190,7 +199,7 @@ public class FrmAddFunction extends javax.swing.JFrame {
                         .addGap(24, 24, 24)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtHour, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(dateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cmbHall, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
@@ -216,7 +225,7 @@ public class FrmAddFunction extends javax.swing.JFrame {
                     .addComponent(cmbMovie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblDate))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -270,7 +279,7 @@ public class FrmAddFunction extends javax.swing.JFrame {
     private javax.swing.JLabel lblRoom;
     private java.awt.Label lblTitle1;
     private javax.swing.JLabel lblTitle2;
-    private javax.swing.JTextField txtDate;
+    private com.toedter.calendar.JDateChooser dateChooser;
     private javax.swing.JTextField txtHour;
     private javax.swing.JTextField txtPrice;
     // End of variables declaration//GEN-END:variables

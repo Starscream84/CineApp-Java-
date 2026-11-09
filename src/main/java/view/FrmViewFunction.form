@@ -66,6 +66,11 @@
                               <Group type="103" groupAlignment="2" attributes="0">
                                   <Component id="lblTitle2" alignment="2" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblTitle1" alignment="2" min="-2" pref="106" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="2" attributes="0">
+                                      <Component id="lblSearch" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="txtSearch" min="-2" pref="250" max="-2" attributes="0"/>
+                                  </Group>
                                   <Component id="jScrollPane2" alignment="2" min="-2" pref="432" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -82,7 +87,12 @@
                   <Component id="lblTitle1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="lblTitle2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblSearch" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtSearch" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="jScrollPane2" min="-2" pref="170" max="-2" attributes="0"/>
                   <EmptySpace pref="16" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -186,6 +196,16 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="+ AGREGAR"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblSearch">
+          <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Buscar:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="txtSearch">
         </Component>
       </SubComponents>
     </Container>

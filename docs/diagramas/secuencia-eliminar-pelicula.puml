@@ -1,0 +1,44 @@
+@startuml secuencia-eliminar-pelicula
+title CineApp - Diagrama de Secuencia: Eliminar película
+skinparam shadowing false
+skinparam defaultFontName Helvetica
+skinparam ParticipantBackgroundColor #EAF2FF
+skinparam ParticipantBorderColor #1E293B
+skinparam ActorBorderColor #1E293B
+skinparam ArrowColor #1E293B
+skinparam SequenceLifeLineBorderColor #94A3B8
+skinparam SequenceGroupBorderColor #64748B
+skinparam DatabaseBackgroundColor #EAF2FF
+skinparam DatabaseBorderColor #1E293B
+
+actor "Empleado" as U
+participant "FrmViewMovie" as V <<Vista>>
+participant "ViewMovieController" as C <<Controlador>>
+participant "DeleteMovie" as UC <<Caso de uso>>
+participant "ShowtimeDAO" as SD <<DAO>>
+participant "MovieDAO" as MD <<DAO>>
+database "MySQL" as DB
+
+U -> V : selecciona una película\ny presiona ELIMINAR
+V -> C : delete()
+C -> UC : execute(id)
+UC -> SD : countByMovie(id)
+SD -> DB : SELECT COUNT
+DB --> SD : cantidad
+SD --> UC : count
+
+alt count > 0
+  UC --> C : IllegalArgumentException
+  C -> V : showMessage("No se puede eliminar...")
+else count == 0
+  UC -> MD : delete(id)
+  MD -> DB : DELETE
+  DB --> MD : ok
+  MD --> UC
+  UC --> C
+  C -> V : showMovies(peliculas)
+  C -> V : showMessage("Pelicula eliminada.")
+end
+
+V --> U : muestra el resultado
+@enduml

@@ -21,8 +21,14 @@ Trabajo práctico final de la materia, carrera de Desarrollo de Software — Ins
 **Funciones**
 - Alta, listado, edición y baja.
 - Cada función combina una película y una sala existentes.
-- Validaciones: película y sala obligatorias, fecha en formato `dd/mm/aaaa` y no anterior a hoy, hora en formato `hh:mm`, precio mayor a 0.
+- Validaciones: película, sala y fecha obligatorias, fecha no anterior a hoy, hora en formato `hh:mm`, precio mayor a 0.
 - El listado se muestra ordenado por fecha y hora.
+
+## Características extra (investigación)
+
+**Buscador en los listados.** Los tres listados (películas, salas y funciones) tienen un campo *Buscar* que filtra la tabla mientras se escribe. Busca en todas las columnas e ignora mayúsculas y tildes ("accion" encuentra "Acción"). Está implementado con `TableRowSorter` y un `RowFilter` propio de Swing, en la clase `view.TableSearch`: el filtro solo cambia qué filas se ven, sin modificar los datos.
+
+**Selector de fecha con calendario.** En el formulario de funciones, la fecha se elige con un `JDateChooser` de la librería externa [JCalendar](https://toedter.com/jcalendar/) (`com.toedter:jcalendar:1.4`), en lugar de escribirla a mano.
 
 ## Tecnologías
 
@@ -34,6 +40,7 @@ Trabajo práctico final de la materia, carrera de Desarrollo de Software — Ins
 | Jakarta Persistence (JPA) con Hibernate | 6.6 |
 | MySQL | 8.x o superior |
 | MySQL Connector/J | 9.5 |
+| JCalendar | 1.4 |
 
 ## Arquitectura
 

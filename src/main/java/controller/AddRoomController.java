@@ -3,6 +3,7 @@ package controller;
 import dao.DAOException;
 import dao.RoomDAO;
 import model.Room;
+import model.ValidationException;
 import view.FrmAddRoom;
 
 public class AddRoomController {
@@ -32,23 +33,23 @@ public class AddRoomController {
         try {
             int number = parseNumber(view.getNumberText(), "El numero de sala");
             if (number <= 0) {
-                throw new IllegalArgumentException("El numero de sala tiene que ser mayor a 0.");
+                throw new ValidationException("El numero de sala tiene que ser mayor a 0.");
             }
 
             int capacity = parseNumber(view.getCapacityText(), "La capacidad");
             if (capacity <= 0) {
-                throw new IllegalArgumentException("La capacidad tiene que ser mayor a 0.");
+                throw new ValidationException("La capacidad tiene que ser mayor a 0.");
             }
 
             String type = view.getTypeText();
             if (type.isBlank()) {
-                throw new IllegalArgumentException("Elija un tipo de sala.");
+                throw new ValidationException("Elija un tipo de sala.");
             }
 
             // The room number must be unique (except for the room being edited)
             Room existing = dao.findByNumber(number);
             if (existing != null && !existing.getId().equals(editingId)) {
-                throw new IllegalArgumentException("Ya existe la sala " + number + ".");
+                throw new ValidationException("Ya existe la sala " + number + ".");
             }
 
             Room r = new Room(number, capacity, type);
@@ -67,18 +68,18 @@ public class AddRoomController {
             if (onSaved != null) {
                 onSaved.run();
             }
-        } catch (IllegalArgumentException e) {
+        } catch (ValidationException e) {
             view.showMessage(e.getMessage());
         } catch (DAOException e) {
             view.showError(e.getMessage());
         }
     }
 
-    private int parseNumber(String text, String fieldName) {
+    private int parseNumber(String text, String fieldName) throws ValidationException {
         try {
             return Integer.parseInt(text.trim());
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(fieldName + " tiene que ser un numero.");
+            throw new ValidationException(fieldName + " tiene que ser un numero.");
         }
     }
 }

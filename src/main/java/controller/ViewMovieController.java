@@ -5,6 +5,7 @@ import dao.MovieDAO;
 import dao.ShowtimeDAO;
 import java.util.List;
 import model.Movie;
+import model.ValidationException;
 import model.usecase.DeleteMovie;
 import model.usecase.FindMovie;
 import model.usecase.ListMovies;
@@ -58,7 +59,7 @@ public class ViewMovieController {
             new AddMovieController(window, dao, m, this::loadTable);
             window.setLocationRelativeTo(view);
             window.setVisible(true);
-        } catch (IllegalArgumentException e) {
+        } catch (ValidationException e) {
             view.showMessage(e.getMessage());
         } catch (DAOException e) {
             view.showError(e.getMessage());
@@ -78,7 +79,7 @@ public class ViewMovieController {
             new DeleteMovie().execute(dao, showtimeDao, id);
             loadTable();
             view.showMessage("Pelicula eliminada.");
-        } catch (IllegalArgumentException e) {
+        } catch (ValidationException e) {
             view.showMessage(e.getMessage());
         } catch (DAOException e) {
             view.showError(e.getMessage());

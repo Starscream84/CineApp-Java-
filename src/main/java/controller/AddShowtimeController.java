@@ -7,17 +7,15 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.time.format.ResolverStyle;
 import java.util.List;
 import model.Movie;
 import model.Room;
 import model.Showtime;
+import model.ValidationException;
 import view.FrmAddFunction;
 
 public class AddShowtimeController {
 
-    private static final DateTimeFormatter DATE
-            = DateTimeFormatter.ofPattern("dd/MM/uuuu").withResolverStyle(ResolverStyle.STRICT);
     private static final DateTimeFormatter HOUR = DateTimeFormatter.ofPattern("HH:mm");
 
     private final FrmAddFunction view;
@@ -49,19 +47,22 @@ public class AddShowtimeController {
         try {
             Movie movie = view.getSelectedMovie();
             if (movie == null) {
-                throw new IllegalArgumentException("Elija una pelicula.");
+                throw new ValidationException("Elija una pelicula.");
             }
 
-            LocalDate date = parseDate(view.getDateText());
+            LocalDate date = view.getSelectedDate();
+            if (date == null) {
+                throw new ValidationException("Elija una fecha.");
+            }
             if (date.isBefore(LocalDate.now())) {
-                throw new IllegalArgumentException("La fecha no puede ser anterior a hoy.");
+                throw new ValidationException("La fecha no puede ser anterior a hoy.");
             }
 
             LocalTime time = parseTime(view.getHourText());
 
             Room room = view.getSelectedRoom();
             if (room == null) {
-                throw new IllegalArgumentException("Elija una sala.");
+                throw new ValidationException("Elija una sala.");
             }
 
             BigDecimal price = parsePrice(view.getPriceText());
@@ -82,38 +83,30 @@ public class AddShowtimeController {
             if (onSaved != null) {
                 onSaved.run();
             }
-        } catch (IllegalArgumentException e) {
+        } catch (ValidationException e) {
             view.showMessage(e.getMessage());
         } catch (DAOException e) {
             view.showError(e.getMessage());
         }
     }
 
-    private LocalDate parseDate(String text) {
-        try {
-            return LocalDate.parse(text.trim(), DATE);
-        } catch (DateTimeParseException e) {
-            throw new IllegalArgumentException("La fecha tiene que tener el formato dd/mm/aaaa.");
-        }
-    }
-
-    private LocalTime parseTime(String text) {
+    private LocalTime parseTime(String text) throws ValidationException {
         try {
             return LocalTime.parse(text.trim(), HOUR);
         } catch (DateTimeParseException e) {
-            throw new IllegalArgumentException("La hora tiene que tener el formato hh:mm.");
+            throw new ValidationException("La hora tiene que tener el formato hh:mm.");
         }
     }
 
-    private BigDecimal parsePrice(String text) {
+    private BigDecimal parsePrice(String text) throws ValidationException {
         BigDecimal price;
         try {
             price = new BigDecimal(text.trim().replace(",", "."));
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException("El precio tiene que ser un numero.");
+            throw new ValidationException("El precio tiene que ser un numero.");
         }
         if (price.compareTo(BigDecimal.ZERO) <= 0) {
-            throw new IllegalArgumentException("El precio tiene que ser mayor a 0.");
+            throw new ValidationException("El precio tiene que ser mayor a 0.");
         }
         return price;
     }

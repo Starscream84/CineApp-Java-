@@ -1,0 +1,77 @@
+@startuml casos-de-uso
+title CineApp - Diagrama de Casos de Uso General
+left to right direction
+skinparam shadowing false
+skinparam defaultFontName Helvetica
+skinparam usecase {
+  BackgroundColor #EAF2FF
+  BorderColor #1E293B
+}
+skinparam rectangle {
+  BorderColor #1E293B
+  FontStyle bold
+}
+skinparam actor {
+  BorderColor #1E293B
+}
+skinparam ArrowColor #1E293B
+
+actor "Empleado\ndel cine" as E
+
+rectangle "CineApp" {
+
+  package "Películas" {
+    usecase "Gestionar películas" as GP
+    usecase "Agregar película" as AP
+    usecase "Editar película" as EP
+    usecase "Eliminar película" as BP
+  }
+
+  package "Salas" {
+    usecase "Gestionar salas" as GS
+    usecase "Agregar sala" as AS
+    usecase "Editar sala" as ES
+    usecase "Eliminar sala" as BS
+  }
+
+  package "Funciones" {
+    usecase "Gestionar funciones" as GF
+    usecase "Agregar función" as AF
+    usecase "Editar función" as EF
+    usecase "Eliminar función" as BF
+    usecase "Seleccionar película" as SP
+    usecase "Seleccionar sala" as SS
+  }
+
+  usecase "Verificar funciones\nasociadas" as VF
+}
+
+E --> GP
+E --> GS
+E --> GF
+
+AP .> GP : <<extend>>
+EP .> GP : <<extend>>
+BP .> GP : <<extend>>
+
+AS .> GS : <<extend>>
+ES .> GS : <<extend>>
+BS .> GS : <<extend>>
+
+AF .> GF : <<extend>>
+EF .> GF : <<extend>>
+BF .> GF : <<extend>>
+
+AF ..> SP : <<include>>
+AF ..> SS : <<include>>
+EF ..> SP : <<include>>
+EF ..> SS : <<include>>
+
+BP ..> VF : <<include>>
+BS ..> VF : <<include>>
+
+note bottom of GP
+  "Gestionar" incluye ver el
+  listado de cada entidad.
+end note
+@enduml

@@ -2,6 +2,7 @@ package model.usecase;
 
 import java.time.Year;
 import model.Movie;
+import model.ValidationException;
 
 class MovieValidation {
 
@@ -10,22 +11,22 @@ class MovieValidation {
     private MovieValidation() {
     }
 
-    static void validate(Movie movie) {
+    static void validate(Movie movie) throws ValidationException {
         if (movie.getTitle() == null || movie.getTitle().isBlank()) {
-            throw new IllegalArgumentException("El titulo es obligatorio.");
+            throw new ValidationException("El titulo es obligatorio.");
         }
         if (movie.getGenre() == null || movie.getGenre().isBlank()) {
-            throw new IllegalArgumentException("Elija un genero.");
+            throw new ValidationException("Elija un genero.");
         }
         if (movie.getDuration() <= 0) {
-            throw new IllegalArgumentException("La duracion tiene que ser mayor a 0.");
+            throw new ValidationException("La duracion tiene que ser mayor a 0.");
         }
         if (movie.getFilmRating() == null || movie.getFilmRating().isBlank()) {
-            throw new IllegalArgumentException("Elija una clasificacion.");
+            throw new ValidationException("Elija una clasificacion.");
         }
         int maxYear = Year.now().getValue() + 2;
         if (movie.getYear() < MIN_YEAR || movie.getYear() > maxYear) {
-            throw new IllegalArgumentException(
+            throw new ValidationException(
                     "El año tiene que estar entre " + MIN_YEAR + " y " + maxYear + ".");
         }
     }

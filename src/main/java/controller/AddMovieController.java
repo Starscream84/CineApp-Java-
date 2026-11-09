@@ -3,6 +3,7 @@ package controller;
 import dao.DAOException;
 import dao.MovieDAO;
 import model.Movie;
+import model.ValidationException;
 import model.usecase.CreateMovie;
 import model.usecase.UpdateMovie;
 import view.FrmAddMovie;
@@ -56,18 +57,18 @@ public class AddMovieController {
             if (onSaved != null) {
                 onSaved.run();
             }
-        } catch (IllegalArgumentException e) {
+        } catch (ValidationException e) {
             view.showMessage(e.getMessage());
         } catch (DAOException e) {
             view.showError(e.getMessage());
         }
     }
 
-    private int parseNumber(String text, String fieldName) {
+    private int parseNumber(String text, String fieldName) throws ValidationException {
         try {
             return Integer.parseInt(text.trim());
         } catch (NumberFormatException e) {
-            throw new IllegalArgumentException(fieldName + " tiene que ser un numero.");
+            throw new ValidationException(fieldName + " tiene que ser un numero.");
         }
     }
 }

@@ -10,6 +10,7 @@ public class FrmViewRoom extends javax.swing.JFrame {
 
     public FrmViewRoom() {
         initComponents();
+        TableSearch.install(tblRooms, txtSearch);
     }
 
     public JButton getBtnAdd() {
@@ -63,6 +64,8 @@ public class FrmViewRoom extends javax.swing.JFrame {
         btnEdit = new javax.swing.JButton();
         btnDelete = new javax.swing.JButton();
         jScrollPane = new javax.swing.JScrollPane();
+        lblSearch = new javax.swing.JLabel();
+        txtSearch = new javax.swing.JTextField();
         tblRooms = new javax.swing.JTable();
         lblTitle2 = new javax.swing.JLabel();
         lblTitle1 = new java.awt.Label();
@@ -116,6 +119,9 @@ public class FrmViewRoom extends javax.swing.JFrame {
         btnAdd.setBackground(new java.awt.Color(153, 255, 153));
         btnAdd.setText("+ AGREGAR");
 
+        lblSearch.setForeground(new java.awt.Color(255, 255, 255));
+        lblSearch.setText("Buscar:");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -144,6 +150,10 @@ public class FrmViewRoom extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnDelete)
                                 .addGap(135, 135, 135))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(lblSearch)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(59, Short.MAX_VALUE))
         );
@@ -154,6 +164,10 @@ public class FrmViewRoom extends javax.swing.JFrame {
                 .addComponent(lblTitle1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(2, 2, 2)
                 .addComponent(lblTitle2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblSearch)
+                    .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
@@ -198,5 +212,7 @@ public class FrmViewRoom extends javax.swing.JFrame {
     private java.awt.Label lblTitle1;
     private javax.swing.JLabel lblTitle2;
     private javax.swing.JTable tblRooms;
+    private javax.swing.JLabel lblSearch;
+    private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 }
