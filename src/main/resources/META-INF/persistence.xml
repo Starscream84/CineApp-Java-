@@ -3,6 +3,7 @@
   <persistence-unit name="cinema">
     <class>model.Movie</class>
     <class>model.Showtime</class>
+    <class>model.Room</class>
     <properties>
       <!-- Example credentials. Override them with -Ddb.user and -Ddb.password (see README). -->
       <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/cinema"/>

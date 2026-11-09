@@ -7,11 +7,10 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 import model.Movie;
+import model.Room;
 import model.Showtime;
 
 public class FrmAddFunction extends javax.swing.JFrame {
-
-    private static final Integer[] ROOMS = {1, 2, 3, 4, 5};
 
     private static final DateTimeFormatter DATE = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     private static final DateTimeFormatter HOUR = DateTimeFormatter.ofPattern("HH:mm");
@@ -19,8 +18,6 @@ public class FrmAddFunction extends javax.swing.JFrame {
     public FrmAddFunction() {
         initComponents();
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        cmbHall.setModel(new DefaultComboBoxModel<>(ROOMS));
-        cmbHall.setSelectedIndex(-1);
     }
 
     public JButton getBtnSave() {
@@ -37,8 +34,14 @@ public class FrmAddFunction extends javax.swing.JFrame {
         return (Movie) cmbMovie.getSelectedItem();
     }
 
-    public Integer getSelectedRoom() {
-        return (Integer) cmbHall.getSelectedItem();
+    // Loads the rooms from the database into the combo box
+    public void setRooms(List<Room> rooms) {
+        cmbHall.setModel(new DefaultComboBoxModel<>(rooms.toArray(new Room[0])));
+        cmbHall.setSelectedIndex(-1);
+    }
+
+    public Room getSelectedRoom() {
+        return (Room) cmbHall.getSelectedItem();
     }
 
     public String getDateText() {
@@ -57,7 +60,7 @@ public class FrmAddFunction extends javax.swing.JFrame {
         selectMovie(s.getMovie());
         txtDate.setText(s.getDate().format(DATE));
         txtHour.setText(s.getStartTime().format(HOUR));
-        cmbHall.setSelectedItem(s.getRoom());
+        selectRoom(s.getRoom());
         txtPrice.setText(s.getPrice().toPlainString());
     }
 
@@ -66,6 +69,16 @@ public class FrmAddFunction extends javax.swing.JFrame {
         for (int i = 0; i < cmbMovie.getItemCount(); i++) {
             if (cmbMovie.getItemAt(i).getId().equals(movie.getId())) {
                 cmbMovie.setSelectedIndex(i);
+                return;
+            }
+        }
+    }
+
+    // Selects the room in the combo box by comparing IDs
+    private void selectRoom(Room room) {
+        for (int i = 0; i < cmbHall.getItemCount(); i++) {
+            if (cmbHall.getItemAt(i).getId().equals(room.getId())) {
+                cmbHall.setSelectedIndex(i);
                 return;
             }
         }
@@ -247,7 +260,7 @@ public class FrmAddFunction extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExit1;
     private javax.swing.JButton btnSave;
-    private javax.swing.JComboBox<Integer> cmbHall;
+    private javax.swing.JComboBox<Room> cmbHall;
     private javax.swing.JComboBox<Movie> cmbMovie;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblDate;

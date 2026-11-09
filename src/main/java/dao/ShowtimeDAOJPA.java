@@ -114,6 +114,27 @@ public class ShowtimeDAOJPA implements ShowtimeDAO {
     }
 
     /**
+     * Counts how many showtimes are scheduled in a room.
+     * <p>
+     * Used to prevent deleting a room that still has showtimes scheduled.
+     *
+     * @param roomId the ID of the room
+     * @return the number of showtimes in that room; {@code 0} if it has none
+     * @throws DAOException if the count could not be performed
+     */
+    @Override
+    public long countByRoom(Long roomId) throws DAOException {
+        try {
+            return em.createQuery(
+                    "SELECT COUNT(s) FROM Showtime s WHERE s.room.id = :roomId", Long.class)
+                    .setParameter("roomId", roomId)
+                    .getSingleResult();
+        } catch (PersistenceException e) {
+            throw new DAOException("No se pudieron contar las funciones de la sala.", e);
+        }
+    }
+
+    /**
      * Updates an existing showtime with the data of the given object.
      * <p>
      * The showtime is identified by its ID, which must already exist in the

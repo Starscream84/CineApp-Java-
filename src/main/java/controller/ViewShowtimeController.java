@@ -2,9 +2,11 @@ package controller;
 
 import dao.DAOException;
 import dao.MovieDAO;
+import dao.RoomDAO;
 import dao.ShowtimeDAO;
 import java.util.List;
 import model.Movie;
+import model.Room;
 import model.Showtime;
 import view.FrmAddFunction;
 import view.FrmViewFunction;
@@ -14,11 +16,14 @@ public class ViewShowtimeController {
     private final FrmViewFunction view;
     private final ShowtimeDAO showtimeDao;
     private final MovieDAO movieDao;
+    private final RoomDAO roomDao;
 
-    public ViewShowtimeController(FrmViewFunction view, ShowtimeDAO showtimeDao, MovieDAO movieDao) {
+    public ViewShowtimeController(FrmViewFunction view, ShowtimeDAO showtimeDao,
+            MovieDAO movieDao, RoomDAO roomDao) {
         this.view = view;
         this.showtimeDao = showtimeDao;
         this.movieDao = movieDao;
+        this.roomDao = roomDao;
 
         view.getBtnAdd().addActionListener(e -> openForm(null));
         view.getBtnEdit().addActionListener(e -> edit());
@@ -61,12 +66,17 @@ public class ViewShowtimeController {
                 view.showMessage("Primero carga al menos una pelicula.");
                 return;
             }
+            List<Room> rooms = roomDao.findAll();
+            if (rooms.isEmpty()) {
+                view.showMessage("Primero carga al menos una sala.");
+                return;
+            }
             FrmAddFunction window = new FrmAddFunction();
-            new AddShowtimeController(window, showtimeDao, movies, showtime, this::loadTable);
+            new AddShowtimeController(window, showtimeDao, movies, rooms, showtime, this::loadTable);
             window.setLocationRelativeTo(view);
             window.setVisible(true);
         } catch (DAOException e) {
-            view.showError("No se pudieron cargar las peliculas: " + e.getMessage());
+            view.showError("No se pudieron cargar los datos: " + e.getMessage());
         }
     }
 

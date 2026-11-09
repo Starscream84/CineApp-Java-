@@ -10,6 +10,7 @@ import java.time.format.DateTimeParseException;
 import java.time.format.ResolverStyle;
 import java.util.List;
 import model.Movie;
+import model.Room;
 import model.Showtime;
 import view.FrmAddFunction;
 
@@ -25,12 +26,13 @@ public class AddShowtimeController {
     private final Runnable onSaved;
 
     public AddShowtimeController(FrmAddFunction view, ShowtimeDAO showtimeDao,
-            List<Movie> movies, Showtime showtime, Runnable onSaved) {
+            List<Movie> movies, List<Room> rooms, Showtime showtime, Runnable onSaved) {
         this.view = view;
         this.showtimeDao = showtimeDao;
         this.onSaved = onSaved;
 
         view.setMovies(movies);
+        view.setRooms(rooms);
 
         if (showtime != null) {
             this.editingId = showtime.getId();
@@ -57,7 +59,7 @@ public class AddShowtimeController {
 
             LocalTime time = parseTime(view.getHourText());
 
-            Integer room = view.getSelectedRoom();
+            Room room = view.getSelectedRoom();
             if (room == null) {
                 throw new IllegalArgumentException("Elija una sala.");
             }

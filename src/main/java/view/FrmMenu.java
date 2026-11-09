@@ -19,6 +19,10 @@ public class FrmMenu extends javax.swing.JFrame {
         return btnFunctions;
     }
 
+    public JButton getBtnRooms() {
+        return btnRooms;
+    }
+
     public JButton getBtnExit() {
         return btnExit;
     }
@@ -42,6 +46,7 @@ public class FrmMenu extends javax.swing.JFrame {
         lblSubtitle = new java.awt.Label();
         btnMovies = new javax.swing.JButton();
         btnFunctions = new javax.swing.JButton();
+        btnRooms = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -69,6 +74,11 @@ public class FrmMenu extends javax.swing.JFrame {
         btnFunctions.setForeground(new java.awt.Color(0, 0, 51));
         btnFunctions.setText("Gestionar funciones");
 
+        btnRooms.setBackground(new java.awt.Color(185, 216, 255));
+        btnRooms.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnRooms.setForeground(new java.awt.Color(0, 0, 51));
+        btnRooms.setText("Gestionar salas");
+
         btnExit.setBackground(new java.awt.Color(185, 216, 255));
         btnExit.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnExit.setForeground(new java.awt.Color(0, 0, 51));
@@ -85,6 +95,7 @@ public class FrmMenu extends javax.swing.JFrame {
                     .addComponent(lblSubtitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnMovies, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnFunctions, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRooms, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(149, 149, 149))
         );
@@ -100,8 +111,10 @@ public class FrmMenu extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(btnFunctions, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(btnRooms, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(126, Short.MAX_VALUE))
+                .addContainerGap(74, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -126,6 +139,7 @@ public class FrmMenu extends javax.swing.JFrame {
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnFunctions;
     private javax.swing.JButton btnMovies;
+    private javax.swing.JButton btnRooms;
     private javax.swing.JPanel jPanel1;
     private java.awt.Label lblSubtitle;
     private java.awt.Label lblTitle;

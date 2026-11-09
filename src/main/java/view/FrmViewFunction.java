@@ -39,7 +39,7 @@ public class FrmViewFunction extends javax.swing.JFrame {
                 s.getMovie().getTitle(),
                 s.getDate().format(DATE),
                 s.getStartTime().format(HOUR),
-                "Sala " + s.getRoom(),
+                s.getRoom().toString(),
                 "$" + s.getPrice()
             });
         }

@@ -23,7 +23,9 @@ public class Showtime {
     @Column(nullable = false)
     private LocalTime startTime;
 
-    private int room;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "room_id", nullable = false)
+    private Room room;
 
     @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal price;
@@ -31,7 +33,7 @@ public class Showtime {
     public Showtime() {
     }
 
-    public Showtime(Movie movie, LocalDate date, LocalTime startTime, int room, BigDecimal price) {
+    public Showtime(Movie movie, LocalDate date, LocalTime startTime, Room room, BigDecimal price) {
         this.movie = movie;
         this.date = date;
         this.startTime = startTime;
@@ -76,11 +78,11 @@ public class Showtime {
         this.startTime = startTime;
     }
 
-    public int getRoom() {
+    public Room getRoom() {
         return room;
     }
 
-    public void setRoom(int room) {
+    public void setRoom(Room room) {
         this.room = room;
     }
 

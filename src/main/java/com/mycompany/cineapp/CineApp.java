@@ -3,6 +3,8 @@ package com.mycompany.cineapp;
 import controller.MenuController;
 import dao.MovieDAO;
 import dao.MovieDAOJPA;
+import dao.RoomDAO;
+import dao.RoomDAOJPA;
 import dao.ShowtimeDAO;
 import dao.ShowtimeDAOJPA;
 import jakarta.persistence.EntityManager;
@@ -30,9 +32,10 @@ public class CineApp {
         EntityManager em = emf.createEntityManager();
         MovieDAO movieDao = new MovieDAOJPA(em);
         ShowtimeDAO showtimeDao = new ShowtimeDAOJPA(em);
+        RoomDAO roomDao = new RoomDAOJPA(em);
 
         FrmMenu view = new FrmMenu();
-        new MenuController(view, movieDao, showtimeDao, () -> {
+        new MenuController(view, movieDao, showtimeDao, roomDao, () -> {
             em.close();
             emf.close();
         });

@@ -1,28 +1,34 @@
 package controller;
 
 import dao.MovieDAO;
+import dao.RoomDAO;
 import dao.ShowtimeDAO;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import view.FrmMenu;
 import view.FrmViewFunction;
 import view.FrmViewMovie;
+import view.FrmViewRoom;
 
 public class MenuController {
 
     private final FrmMenu view;
     private final MovieDAO movieDao;
     private final ShowtimeDAO showtimeDao;
+    private final RoomDAO roomDao;
     private final Runnable onExit;
 
-    public MenuController(FrmMenu view, MovieDAO movieDao, ShowtimeDAO showtimeDao, Runnable onExit) {
+    public MenuController(FrmMenu view, MovieDAO movieDao, ShowtimeDAO showtimeDao,
+            RoomDAO roomDao, Runnable onExit) {
         this.view = view;
         this.movieDao = movieDao;
         this.showtimeDao = showtimeDao;
+        this.roomDao = roomDao;
         this.onExit = onExit;
 
         view.getBtnMovies().addActionListener(e -> openMovies());
         view.getBtnFunctions().addActionListener(e -> openFunctions());
+        view.getBtnRooms().addActionListener(e -> openRooms());
         view.getBtnExit().addActionListener(e -> exit());
 
         view.addWindowListener(new WindowAdapter() {
@@ -42,7 +48,14 @@ public class MenuController {
 
     private void openFunctions() {
         FrmViewFunction window = new FrmViewFunction();
-        new ViewShowtimeController(window, showtimeDao, movieDao);
+        new ViewShowtimeController(window, showtimeDao, movieDao, roomDao);
+        window.setLocationRelativeTo(view);
+        window.setVisible(true);
+    }
+
+    private void openRooms() {
+        FrmViewRoom window = new FrmViewRoom();
+        new ViewRoomController(window, roomDao, showtimeDao);
         window.setLocationRelativeTo(view);
         window.setVisible(true);
     }
