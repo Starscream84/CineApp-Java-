@@ -6,28 +6,41 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 @Entity
-@Table(name = "functions")
-
-public class Function {
+@Table(name = "showtimes")
+public class Showtime {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String movie;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "movie_id", nullable = false)
+    private Movie movie;
+
+    @Column(nullable = false)
     private LocalDate date;
+
+    @Column(nullable = false)
     private LocalTime startTime;
+
     private int room;
+
+    @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal price;
 
-    public Function() {
+    public Showtime() {
     }
 
-    public Function(String movie, LocalDate date, LocalTime startTime, int room, BigDecimal price) {
+    public Showtime(Movie movie, LocalDate date, LocalTime startTime, int room, BigDecimal price) {
         this.movie = movie;
         this.date = date;
         this.startTime = startTime;
         this.room = room;
         this.price = price;
+    }
+
+    public LocalTime getEndTime() {
+        return startTime.plusMinutes(movie.getDuration());
     }
 
     // Getters and Setters
@@ -39,11 +52,11 @@ public class Function {
         this.id = id;
     }
 
-    public String getMovie() {
+    public Movie getMovie() {
         return movie;
     }
 
-    public void setMovie(String movie) {
+    public void setMovie(Movie movie) {
         this.movie = movie;
     }
 

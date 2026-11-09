@@ -1,32 +1,39 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package view;
 
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
+import model.Movie;
 
-/**
- *
- * @author User
- */
 public class FrmAddMovie extends javax.swing.JFrame {
-    
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrmAddMovie.class.getName());
-    
-    
-    
+
+    private static final String[] GENRES = {
+        "Acción", "Animación", "Aventura", "Ciencia ficción", "Comedia",
+        "Documental", "Drama", "Fantasía", "Romance", "Suspenso", "Terror"
+    };
+
+    private static final String[] RATINGS = {"ATP", "+13", "+16", "+18"};
+
     public FrmAddMovie() {
         initComponents();
+        cmbGenre.setModel(new DefaultComboBoxModel<>(GENRES));
+        cmbRating.setModel(new DefaultComboBoxModel<>(RATINGS));
+        cmbGenre.setSelectedIndex(-1);
+        cmbRating.setSelectedIndex(-1);
+        btnExit.addActionListener(e -> dispose());
     }
 
-   //metodos que obtienen los datos     
+    public JButton getBtnSave() {
+        return btnSave;
+    }
 
     public String getTitleText() {
         return txtTitle.getText();
     }
 
     public String getGenreText() {
-        return txtGenre.getText();
+        return selectedText(cmbGenre);
     }
 
     public String getDurationText() {
@@ -34,26 +41,59 @@ public class FrmAddMovie extends javax.swing.JFrame {
     }
 
     public String getRatingText() {
-        return txtRating.getText();
+        return selectedText(cmbRating);
     }
 
     public String getYearText() {
         return txtYear.getText();
     }
-  
-   
+
+    private String selectedText(JComboBox<String> combo) {
+        Object item = combo.getSelectedItem();
+        return item == null ? "" : item.toString();
+    }
+
+    public void clearForm() {
+        txtTitle.setText("");
+        cmbGenre.setSelectedIndex(-1);
+        txtDuration.setText("");
+        cmbRating.setSelectedIndex(-1);
+        txtYear.setText("");
+        txtTitle.requestFocus();
+    }
+
+    public void showMessage(String message) {
+        JOptionPane.showMessageDialog(this, message);
+    }
+
+    public void showError(String message) {
+        JOptionPane.showMessageDialog(this, message, "Error", JOptionPane.ERROR_MESSAGE);
+    }
+
+    public void fillForm(Movie m) {
+        txtTitle.setText(m.getTitle());
+        cmbGenre.setSelectedItem(m.getGenre());
+        txtDuration.setText(String.valueOf(m.getDuration()));
+        cmbRating.setSelectedItem(m.getFilmRating());
+        txtYear.setText(String.valueOf(m.getYear()));
+    }
+
+    public void setEditMode() {
+        setTitle("EditMovie");
+        lblTitle2.setText("Editar pelicula");
+        btnSave.setText("ACTUALIZAR");
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
         txtTitle = new javax.swing.JTextField();
-        txtGenre = new javax.swing.JTextField();
         lblRating = new javax.swing.JLabel();
         lblTitle = new javax.swing.JLabel();
         txtDuration = new javax.swing.JTextField();
         lblDuration = new javax.swing.JLabel();
-        txtRating = new javax.swing.JTextField();
         txtYear = new javax.swing.JTextField();
         lblYear = new javax.swing.JLabel();
         lblGenre = new javax.swing.JLabel();
@@ -61,6 +101,8 @@ public class FrmAddMovie extends javax.swing.JFrame {
         lblTitle1 = new java.awt.Label();
         btnSave = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
+        cmbRating = new javax.swing.JComboBox<>();
+        cmbGenre = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("AddMovie");
@@ -103,6 +145,10 @@ public class FrmAddMovie extends javax.swing.JFrame {
         btnExit.setForeground(new java.awt.Color(0, 0, 51));
         btnExit.setText("Salir");
 
+        cmbRating.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        cmbGenre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -112,20 +158,15 @@ public class FrmAddMovie extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblTitle)
-                                    .addComponent(lblYear))
-                                .addGap(167, 167, 167))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtGenre, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtYear, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                            .addComponent(lblTitle)
+                            .addComponent(lblYear)
+                            .addComponent(txtYear, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmbGenre, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblDuration)
-                            .addComponent(txtRating, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtDuration, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtDuration, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmbRating, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(lblGenre)
                         .addGap(160, 160, 160)
@@ -162,11 +203,11 @@ public class FrmAddMovie extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblGenre)
                     .addComponent(lblRating))
-                .addGap(2, 2, 2)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtRating, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtGenre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmbRating, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbGenre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(2, 2, 2)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDuration)
                     .addComponent(lblYear))
@@ -197,17 +238,11 @@ public class FrmAddMovie extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        
-        java.awt.EventQueue.invokeLater(() -> new FrmAddMovie().setVisible(true));
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnSave;
+    private javax.swing.JComboBox<String> cmbGenre;
+    private javax.swing.JComboBox<String> cmbRating;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblDuration;
     private javax.swing.JLabel lblGenre;
@@ -217,8 +252,6 @@ public class FrmAddMovie extends javax.swing.JFrame {
     private javax.swing.JLabel lblTitle2;
     private javax.swing.JLabel lblYear;
     private javax.swing.JTextField txtDuration;
-    private javax.swing.JTextField txtGenre;
-    private javax.swing.JTextField txtRating;
     private javax.swing.JTextField txtTitle;
     private javax.swing.JTextField txtYear;
     // End of variables declaration//GEN-END:variables

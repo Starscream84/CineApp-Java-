@@ -55,25 +55,16 @@
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="lblTitle" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="lblYear" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="167" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="txtGenre" min="-2" pref="192" max="-2" attributes="0"/>
-                                      <Component id="txtYear" min="-2" pref="192" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="lblTitle" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblYear" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtYear" alignment="1" min="-2" pref="192" max="-2" attributes="0"/>
+                              <Component id="cmbGenre" max="32767" attributes="0"/>
                           </Group>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="lblDuration" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtRating" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
                               <Component id="txtDuration" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
+                              <Component id="cmbRating" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -123,12 +114,12 @@
                       <Component id="lblGenre" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblRating" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="txtRating" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="txtGenre" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
                   <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="cmbRating" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cmbGenre" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lblDuration" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="lblYear" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -152,8 +143,6 @@
           <Properties>
             <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtGenre">
         </Component>
         <Component class="javax.swing.JLabel" name="lblRating">
           <Properties>
@@ -180,8 +169,6 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Duraci&#xf3;n"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txtRating">
         </Component>
         <Component class="javax.swing.JTextField" name="txtYear">
         </Component>
@@ -250,6 +237,36 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Salir"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="cmbRating">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="4">
+                <StringItem index="0" value="Item 1"/>
+                <StringItem index="1" value="Item 2"/>
+                <StringItem index="2" value="Item 3"/>
+                <StringItem index="3" value="Item 4"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="cmbGenre">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="4">
+                <StringItem index="0" value="Item 1"/>
+                <StringItem index="1" value="Item 2"/>
+                <StringItem index="2" value="Item 3"/>
+                <StringItem index="3" value="Item 4"/>
+              </StringArray>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

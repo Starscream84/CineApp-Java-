@@ -1,22 +1,31 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package view;
 
-/**
- *
- * @author User
- */
-public class FrmMenu extends javax.swing.JFrame {
-    
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrmMenu.class.getName());
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import javax.swing.WindowConstants;
 
-    /**
-     * Creates new form FrmMenu
-     */
+public class FrmMenu extends javax.swing.JFrame {
+
     public FrmMenu() {
         initComponents();
+        setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
+    }
+
+    public JButton getBtnMovies() {
+        return btnMovies;
+    }
+
+    public JButton getBtnFunctions() {
+        return btnFunctions;
+    }
+
+    public JButton getBtnExit() {
+        return btnExit;
+    }
+
+    public boolean confirm(String message) {
+        int option = JOptionPane.showConfirmDialog(this, message, "Confirmar", JOptionPane.YES_NO_OPTION);
+        return option == JOptionPane.YES_OPTION;
     }
 
     /**
@@ -28,34 +37,12 @@ public class FrmMenu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jEditorPane1 = new javax.swing.JEditorPane();
         jPanel1 = new javax.swing.JPanel();
         lblTitle = new java.awt.Label();
         lblSubtitle = new java.awt.Label();
         btnMovies = new javax.swing.JButton();
         btnFunctions = new javax.swing.JButton();
         btnExit = new javax.swing.JButton();
-
-        jButton1.setText("jButton1");
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
-
-        jScrollPane2.setViewportView(jEditorPane1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -76,19 +63,16 @@ public class FrmMenu extends javax.swing.JFrame {
         btnMovies.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnMovies.setForeground(new java.awt.Color(0, 0, 51));
         btnMovies.setText("Gestionar peliculas");
-        btnMovies.addActionListener(this::btnMoviesActionPerformed);
 
         btnFunctions.setBackground(new java.awt.Color(185, 216, 255));
         btnFunctions.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnFunctions.setForeground(new java.awt.Color(0, 0, 51));
         btnFunctions.setText("Gestionar funciones");
-        btnFunctions.addActionListener(this::btnFunctionsActionPerformed);
 
         btnExit.setBackground(new java.awt.Color(185, 216, 255));
         btnExit.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnExit.setForeground(new java.awt.Color(0, 0, 51));
         btnExit.setText("Salir");
-        btnExit.addActionListener(this::btnExitActionPerformed);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -126,7 +110,7 @@ public class FrmMenu extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 504, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -138,57 +122,11 @@ public class FrmMenu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnMoviesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMoviesActionPerformed
-        FormMovie ventana = new FormMovie();
-        ventana.setLocationRelativeTo(this);
-        ventana.setVisible(true);        
-    }//GEN-LAST:event_btnMoviesActionPerformed
-
-    private void btnFunctionsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFunctionsActionPerformed
-        FormFunction ventana = new FormFunction();
-        ventana.setLocationRelativeTo(this);
-        ventana.setVisible(true);
-    }//GEN-LAST:event_btnFunctionsActionPerformed
-
-    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnExitActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new FrmMenu().setVisible(true));
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnFunctions;
     private javax.swing.JButton btnMovies;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private java.awt.Label lblSubtitle;
     private java.awt.Label lblTitle;
     // End of variables declaration//GEN-END:variables

@@ -187,4 +187,17 @@ public class Movie {
     public void setYear(int year) {
         this.year = year;
     }
+
+    /**
+     * Returns a text representation of the movie, used to display it in combo
+     * boxes.
+     *
+     * @return the title followed by the year in parentheses, for example "Dune
+     * (2021)"
+     *
+     */
+    @Override
+    public String toString() {
+        return title + " (" + year + ")";
+    }
 }

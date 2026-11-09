@@ -1,28 +1,57 @@
 package com.mycompany.cineapp;
 
+import controller.MenuController;
 import dao.MovieDAO;
 import dao.MovieDAOJPA;
-import controller.MovieController;
-import jakarta.persistence.*;
-import view.FormMovie;
+import dao.ShowtimeDAO;
+import dao.ShowtimeDAOJPA;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
+import jakarta.persistence.PersistenceException;
+import java.util.HashMap;
+import java.util.Map;
+import javax.swing.JOptionPane;
+import view.FrmMenu;
 
 public class CineApp {
 
     public static void main(String[] args) {
-        EntityManagerFactory emf
-                = Persistence.createEntityManagerFactory("cinema");
-        EntityManager em = emf.createEntityManager();
+        EntityManagerFactory emf;
+        try {
+            emf = Persistence.createEntityManagerFactory("cinema", databaseOverrides());
+        } catch (PersistenceException e) {
+            JOptionPane.showMessageDialog(null,
+                    "No se pudo conectar a la base de datos.\nRevisa que MySQL este corriendo y que el usuario\ny la contraseña sean correctos.",
+                    "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
-        MovieDAO dao = new MovieDAOJPA(em);
-        FormMovie view = new FormMovie();
-        new MovieController(view, dao);
-        view.setVisible(true);
-        view.addWindowListener(new java.awt.event.WindowAdapter() {
-            @Override
-            public void windowClosing(java.awt.event.WindowEvent e) {
-                em.close();
-                emf.close();
-            }
+        EntityManager em = emf.createEntityManager();
+        MovieDAO movieDao = new MovieDAOJPA(em);
+        ShowtimeDAO showtimeDao = new ShowtimeDAOJPA(em);
+
+        FrmMenu view = new FrmMenu();
+        new MenuController(view, movieDao, showtimeDao, () -> {
+            em.close();
+            emf.close();
         });
+        view.setLocationRelativeTo(null);
+        view.setVisible(true);
+    }
+
+    // Reads the database user and password from -Ddb.user and -Ddb.password,
+    // so the real credentials are not stored in persistence.xml
+    private static Map<String, String> databaseOverrides() {
+        Map<String, String> overrides = new HashMap<>();
+        String user = System.getProperty("db.user");
+        String password = System.getProperty("db.password");
+        if (user != null) {
+            overrides.put("jakarta.persistence.jdbc.user", user);
+        }
+        if (password != null) {
+            overrides.put("jakarta.persistence.jdbc.password", password);
+        }
+        return overrides;
     }
 }
